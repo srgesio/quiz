@@ -25,6 +25,9 @@ export default class AnswerModel{
     static wrong(value: string){
         return new AnswerModel(value, false)
     }
+    reveal(){
+        return new AnswerModel(this.#value, this.#isRight, true)
+    }
     toObject(){
         return {
             value: this.#value,

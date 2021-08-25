@@ -1,3 +1,4 @@
+import { mix } from "../functions/arrays"
 import AnswerModel from "./answer"
 
 export default class QuestionModel{
@@ -25,19 +26,35 @@ export default class QuestionModel{
     get isRight(){
         return this.#isRight
     }
-    get isAnswerd(){
+    get isAnswered(){
         for(let answer of this.#answers){
             if(answer.showed) return true
         }
         return false
     }
 
+    replyWith(index:number):QuestionModel{
+        const isRight = this.#answers[index]?.isRight
+        const answers = this.#answers.map((answer, id)=>{
+            const selectedAnswer = index === id
+            const shouldReveal = selectedAnswer || answer.isRight
+            return shouldReveal ? answer.reveal() : answer
+        })
+        return new QuestionModel(this.id, this.title, answers, isRight)
+    }
+
+    mixAnswers(){
+        let mixedAnswers = mix(this.#answers)
+        return new QuestionModel(this.#id, this.#title, mixedAnswers, this.#isRight)
+    }
+
     toObject(){
         return {
             id: this.#id,
             title: this.#title,
-            answers: this.#answers.map(answer=>answer.toObject()),
+            isAnswered: this.isAnswered,
             isRight: this.#isRight,
+            answers: this.#answers.map(answer=>answer.toObject()),
         }
     }
 }

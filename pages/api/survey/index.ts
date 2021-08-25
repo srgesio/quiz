@@ -1,6 +1,7 @@
+import { mix } from '../../../functions/arrays'
 import questions from '../questionDb'
 
 export default function Survey(req, res){
-    
-    res.status(200).json(questions.map(question => question.id))
+    const ids = questions.map(question => question.id)
+    res.status(200).json(mix(ids))
 }

@@ -6,7 +6,7 @@ export default function Question(req, res) {
     const oneQuestionOrNothing = questions.filter(question => question.id == id)
 
     if(oneQuestionOrNothing.length === 1){
-        const selectedQuestion = oneQuestionOrNothing[0]
+        const selectedQuestion = oneQuestionOrNothing[0].mixAnswers()
         res.status(200).json(selectedQuestion.toObject())
     }else{
         res.status(204).send()
