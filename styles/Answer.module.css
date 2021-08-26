@@ -1,3 +1,49 @@
 .answer {
   display: flex;
+  height: 100px;
+  margin: 10px;
+  width: 80%;
+  min-width: 500px;
+}
+
+.frontCard,
+.backCard {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+}
+
+.answerContent {
+  position: relative;
+  display: flex;
+  flex: 1;
+}
+
+.frontCard {
+  background: #fff;
+  align-items: center;
+  border-radius: 12px;
+  padding: 15px;
+  color: #000;
+  margin-right: 20px;
+}
+
+.option {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40px;
+  width: 40px;
+  border-radius: 20px;
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-right: 20px;
+  color: #fff;
+}
+
+.value {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #000;
 }
