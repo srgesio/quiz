@@ -47,3 +47,26 @@
   font-weight: 700;
   color: #000;
 }
+
+.backCard .right,
+.backCard .wrong {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  border-radius: 12px;
+}
+
+.right .value,
+.wrong .value {
+  font-size: 1.5rem;
+  color: #fff;
+}
+
+.right {
+  background: #2baa6d;
+}
+.wrong {
+  background: #e44a4c;
+}

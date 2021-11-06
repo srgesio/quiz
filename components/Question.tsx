@@ -1,11 +1,14 @@
 import QuestionModel from "../model/question";
 import styles from '../styles/Question.module.css'
 import Answer from "./Answer";
+import Timer from "./Timer";
 import Title from "./Title";
 
 interface QuestionProps{
     value: QuestionModel
     onAnswer: (index: number) => void
+    timeIsOver: ()=> void
+    timeToAnswer?: number
 }
 
 const options = [
@@ -32,6 +35,7 @@ export default function Question(props: QuestionProps){
     return(
         <div className={styles.question}>
             <Title text={question.title}/>
+            <Timer duration={props.timeToAnswer ?? 10} timeIsOver={props.timeIsOver}/>
             {showAnswers()}
         </div>
     )

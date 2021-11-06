@@ -16,19 +16,39 @@ export default function Answer(props: AnswerProps){
             onClick={()=> props.onAnswer(props.index)}
         >
             <div className={styles.answerContent}>
-                <div className={styles.frontCard}>
-                    <div className={styles.option}
-                        style={{backgroundColor: `${props.optionStyle}`}}
-                    >
-                        {props.option}
+                {!answer.showed ? (
+                    <div className={styles.frontCard}>
+                        <div className={styles.option}
+                            style={{backgroundColor: `${props.optionStyle}`}}
+                        >
+                            {props.option}
+                        </div>
+                        <div className={styles.value}>
+                            {answer.value}
+                        </div>
                     </div>
-                    <div className={styles.value}>
-                        {answer.value}
-                    </div>
-                </div>
-                <div className={styles.backCard}>
 
-                </div>
+                ):(
+
+                    <div className={styles.backCard}>
+                        {answer.isRight ? (
+                            <div className={styles.right}>
+                                <div>A resposta certa é...</div>
+                                <div className={styles.value}>
+                                    {answer.value}
+                                </div>
+                            </div>
+                        ):(
+                            <div className={styles.wrong}>
+                                <div>A resposta informada está errada!</div>
+                                <div className={styles.value}>
+                                    {answer.value}
+                                </div>
+                            </div>
+                        )}
+                        
+                    </div>
+                )}
             </div>
         </div>
     )

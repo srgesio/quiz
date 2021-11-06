@@ -10,7 +10,7 @@ const test = new QuestionModel(1, "Melhor cor?",[
   AnswerModel.wrong('Verde'),
   AnswerModel.wrong('Vermelha'),
   AnswerModel.wrong('Azul'),
-  AnswerModel.wrong('Preta'),
+  AnswerModel.right('Preta'),
 ])
 
 export default function Home() {
@@ -20,6 +20,11 @@ export default function Home() {
 
     console.log(index)
     setQuestion(question.replyWith(index))
+  }
+  function timeIsOver(){
+    if(!question.isAnswered){
+      setQuestion(question.replyWith(-1))
+    }
   }
 
   return (
@@ -31,6 +36,8 @@ export default function Home() {
     }}>
       <Question value={question}
         onAnswer={onAnswer}
+        timeIsOver={timeIsOver}
+        timeToAnswer={5}
       />
 
     </div>
